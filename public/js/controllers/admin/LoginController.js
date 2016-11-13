@@ -1,5 +1,5 @@
 angular.module('cmshirth').controller('LoginController',
-    function($scope, $rootScope, $location, Authentication) {
+    function($scope, $rootScope, $location, Authentication, UsuarioService) {
         
         //reseta o status do login.
         Authentication.clearCredentials();
@@ -8,10 +8,13 @@ angular.module('cmshirth').controller('LoginController',
         $scope.login = function(usuario) {
             $scope.dataLoading = true;
             Authentication.login(usuario.username, usuario.senha, function(response) {
-                console.log("Response");
-                console.log(response);
-                if (response != null) {
-                    Authentication.setCredentials(usuario.username, usuario.senha);
+                //console.log("Response");
+                //console.log(response);
+                if (response.message === "Usuário encontrado.") {
+                    UsuarioService.setUsuario(response.usuario);
+                    //console.log("Usuário salvo no usuário service.");
+                    //console.log(UsuarioService.getUsuario());
+                    Authentication.setCredentials(usuario.username, usuario.senha);                    
                     $location.path("dashboard");
                 } else {
                     $scope.error = response.message;    

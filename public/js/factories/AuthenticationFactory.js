@@ -5,10 +5,10 @@ angular.module("cmshirth").factory('Authentication', function(Base64, $http, $co
     service.login = function(username, password, callback) {
         $timeout(function() {
             LoginFactory.loginUsuario(username, password)
-                .then(function(data) {
-                    console.log("Usuário encontrado!");
-                    console.log(data);
-                    callback(data.data);
+                .then(function(response) {
+                    //console.log("Usuário encontrado!");
+                    //console.log(response.data);
+                    callback(response.data);
                 }, function(error) {
                     console.log("Usuário ou senha incorretos");
                     console.log(error);

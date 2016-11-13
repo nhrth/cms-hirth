@@ -70,16 +70,24 @@ module.exports = function(app) {
                 });
     };
 
-    controller.findByUsername = function(req, res){
+    controller.findByUsername = function(req, res) {
         var usuario = req.body.usuario;
         var senha = req.body.senha;
-        Usuario.find({'usuario': usuario, 'senha': senha}).exec()
-        .then(function(usuario){
-            console.log(usuario);
-            res.json(usuario);
-        }, function(error){
-            return console.log(error);
-        });
+        Usuario.find({ 'usuario': usuario, 'senha': senha }).exec()
+            .then(function(usuario) {
+                if (usuario.length > 0) {
+                    console.log("Usuário:")
+                    console.log(usuario);
+                    res.json({
+                        message: "Usuário encontrado.",
+                        usuario: usuario
+                    });
+                } else {
+                    res.json({ message: "Usuário não encontrado." });
+                }
+            }, function(error) {
+                return console.log(error);
+            });
     }
 
     return controller;
