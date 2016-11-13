@@ -1,0 +1,28 @@
+<div style="background-color: red;">
+    <div class="card col-md-4">
+        <div class="card-block col-md-12">
+            <div class="card-title">
+                <h3>Login</h3>
+            </div>
+            <div class="card-text">
+                <form name="formLogin">
+                    <div class="form-group">
+                        <input type="text" class="form-control" ng-model="usuario.username" placeholder="Usuário" ng-required="true" />
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" ng-model="usuario.senha" placeholder="Senha" ng-required="true" />
+                    </div>
+                    <div>
+                        <button class="btn btn-cms-hirth btn-block" ng-click="login(usuario)">Login</button>
+                    </div>
+                </form>
+                <div>
+                    <p><a href="" ng-click="forgotPassword()">Esqueceu sua senha?</a></p>
+                </div>
+                <div>
+                    <p>Novo? <a class="invert" href="" ng-click="cadastroUsuario()">Cadastre-se</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html ng-app="cmshirth">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Hirth</title>
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div ng-view></div>
+    <!-- Exibição das partials -->
+    <script src="vendor/angular/angular.js"></script>
+    <script src="vendor/angular-route/angular-route.js"></script>
+    <script src="vendor/angular-resource/angular-resource.js"></script>
+    <script src="vendor/angular-cookies/angular-cookies.js"></script>
+    <script src="vendor/angular-bootstrap/ui-bootstrap.js"></script>
+    <script src="vendor/jquery/dist/jquery.js"></script>
+    <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="js/main.js"></script>
+    <!-- Admin Factories -->
+    <script src="js/factories/AuthenticationFactory.js"></script>
+    <script src="js/factories/Base64Factory.js"></script>
+    <script src="js/factories/UsuarioFactory.js"></script>
+    <script src="js/factories/LoginFactory.js"></script>
+    <!-- Admin Services -->
+    <script src="js/services/UsuarioService.js"></script>
+    <!-- Admin Controllers -->
+    <script src="js/controllers/admin/LoginController.js"></script>
+    <script src="js/controllers/admin/CadastroUsuarioController.js"></script>
+    <script src="js/controllers/admin/DashboardController.js"></script>
+    <!-- Site Controllers -->
+    <script src="js/controllers/site/inicioController.js"></script>
+    <script src="js/controllers/site/menuController.js"></script>
+    <script src="js/controllers/site/allNoticiasController.js"></script>
+    <script src="js/controllers/site/noticiaController.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,170 @@
+body {
+    overflow: auto;
+}
+
+.card-title {
+    color: #00979C;
+    text-align: center;
+    padding: 10px;
+}
+.card-text {
+    padding-bottom: 20px;
+}
+.card {
+    position: absolute;
+    top: 15%;
+    left: 30%;
+    min-width: 350px;
+    border-top: solid;
+    border-left: solid;
+    border-color: #00979C;
+    -webkit-box-shadow: 5px 6px 3px -2px rgba(0, 0, 0, 0.47);
+    -moz-box-shadow: 5px 6px 3px -2px rgba(0, 0, 0, 0.47);
+    box-shadow: 5px 6px 3px -2px rgba(0, 0, 0, 0.47);
+}
+#card-top {
+    height: 150px;
+    background-color: #00979C;
+}
+
+#cadastro-usuario {
+    top: 10%;
+}
+#cadastro-usuario span {
+    color: red;
+    font-weight: bold;
+}
+
+/* Formulários personalizados */
+.form-control:focus {
+    border-width: 2px;
+    border-color: #F47A20;
+    box-shadow: none;
+}
+
+/* Botões personalizados */
+.btn-cms-hirth {
+    background-color: #00979C;
+    color: #FFFFFF;
+    font-weight: bold;
+    transition: color 0.35s ease-in-out 0s, background-color 0.35s ease-in-out 0s;
+}
+.btn-cms-hirth:hover {
+    background-color: #F47A20;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+.btn-cms-hirth:disabled {
+    background-color: #00979C;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+/* Links personalidados */
+a {
+    text-decoration: none;
+    color: #00979C;
+    font-weight: bold;
+    transition: color 0.35s ease-in-out 0s, background-color 0.35s ease-in-out 0s;
+}
+a:hover {
+    text-decoration: none;
+    color: #F47A20;
+    font-weight: bold;
+}
+a.invert {
+    text-decoration: none;
+    color: #F47A20;
+    font-weight: bold;
+    transition: color 0.35s ease-in-out 0s, background-color 0.35s ease-in-out 0s;
+}
+a.invert:hover {
+    text-decoration: none;
+    color: #00979C;
+    font-weight: bold;
+}
+
+/* Navbar (menu superior) */
+.navbar-nav a {
+    color: #00979C !important;
+    transition: color 0.35s ease-in-out 0s, background-color 0.35s ease-in-out 0s !important;
+}
+.navbar-nav a:hover {
+    color: #FFFFFF !important;
+    background-color: #F47A20 !important;
+}
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+.row.content {
+    height: 450px;
+    margin-top: 50px;
+}
+
+#bem-vindo {
+    font-weight: bold;
+    font-size: 20px;
+    color: #FFFFFF;
+}
+
+.sidenav {
+    position: fixed;
+    padding-top: 20px;
+    background-color: #00979C;
+    height: 100%;
+    padding: 0;
+}
+.sidenav a {
+    color: #FFFFFF;
+}
+.sidenav li {
+    padding: 1em;
+    border-bottom: solid;    
+    border-width: 1px;
+    border-color: #008184;
+}
+.sidenav li:hover{
+    background-color: #008184;    
+    border-bottom: none;
+    border-right: solid;
+    border-right-width: 4px;
+    border-color: #F47A20;
+}
+.sidenav ul{
+    list-style-type: none;
+    text-align: left;
+    padding: 0;
+}
+
+.li-parent i {
+    padding-left: 5px;
+    padding-right: 10px;
+}
+
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
+
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+    .row.content {
+        height: auto;
+    }
+}
+
+/* Panel Personalizado */
+.panel-cms-hirth {
+    border-color: #FFFFFF;
+}
+
+.panel-cms-hirth .panel-heading {
+    height: 100px;
+    background-color: #00979C;
+    color: #FFFFFF;
+}
