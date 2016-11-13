@@ -1,8 +1,12 @@
 angular.module('cmshirth').controller('LoginController',
     function($scope, $rootScope, $location, Authentication, UsuarioService) {
         
+        if(Authentication.verifyCredentials() != undefined){
+            $location.path("dashboard");
+        }
+
         //reseta o status do login.
-        Authentication.clearCredentials();
+        //Authentication.clearCredentials();
 
         //Função chamada quando o usuário clica no botão "Login" na tela de Login.
         $scope.login = function(usuario) {

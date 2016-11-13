@@ -1,7 +1,8 @@
 angular.module('cmshirth').controller('DashboardController',
-    function($scope, $location, UsuarioService, $cookieStore) {
+    function($scope, $location, UsuarioService, $cookieStore, Authentication) {
 
-    	$scope.telaLogin = function(){
+    	$scope.logout = function(){
+    		Authentication.clearCredentials();
     		$location.path('login');
     	}
 

@@ -36,5 +36,10 @@ angular.module("cmshirth").factory('Authentication', function(Base64, $http, $co
         $http.defaults.headers.common;
     };
 
+    service.verifyCredentials = function(){
+        var user = $cookieStore.get('globals');
+        return user;
+    }
+
     return service;
 });
