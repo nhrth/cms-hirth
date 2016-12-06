@@ -1,14 +1,12 @@
 angular.module('cmshirth').controller('CadastroUsuarioController',
-    function($scope, UsuarioFactory, UsuarioService, $location) {
+    function($scope, UsuarioFactory, UsuarioService, $location, Authentication) {
 
-        $scope.salvarUsuario = function(usuario) {
-            console.log(usuario);
-            UsuarioFactory.saveUsuario(usuario)
+        $scope.saveUser = function(user) {
+            console.log(user);
+            UsuarioFactory.saveUserLogin(user)
                 .then(function() {
-                    UsuarioService.setUsuario(usuario);
-                    console.log(UsuarioService.getUsuario());
-                    //$scope.titulo = "Novo Usuário";
-                    //$scope.mensagem = "Usuário salvo com sucesso!";
+                    UsuarioService.setUsuario(user);
+                    Authentication.setCredentials(user.username, user.password);
                     $location.path("dashboard");                    
                 }, function(error) {
                     $scope.titulo = "Erro"
@@ -17,13 +15,13 @@ angular.module('cmshirth').controller('CadastroUsuarioController',
                 });
         }
 
-        function limpaUsuario(usuario) {
-            usuario.nome = "";
-            usuario.email = "";
-            usuario.username = "";
-            usuario.senha = "";
-            usuario.senha2 = "";
-            console.log(usuario);
+        function limpaUsuario(user) {
+            user.nome = "";
+            user.email = "";
+            user.username = "";
+            user.senha = "";
+            user.senha2 = "";
+            console.log(user);
         }
 
     });

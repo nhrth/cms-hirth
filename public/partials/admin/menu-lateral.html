@@ -1,47 +1,67 @@
-<div class="col-sm-2 sidenav">
-    <ul>
-        <li id="bem-vindo">
-            Bem vindo(a) {{usuarioLogado.currentUser.username}}
-        </li>
-        <li id="inicio">
-            <a href="#/dashboard" class="li-parent">
+<div class="sidenav col-md-2" ng-controller="MenuController">
+    <div id="welcome">
+        Bem vindo(a) {{usuarioLogado.currentUser.username}}
+    </div>
+    <div id="menu">
+        <div id="menu-inicio">
+            <a href="#/dashboard" class="menu-parent">
                 <i class="glyphicon glyphicon-home"></i>
                 <span>Início</span>
             </a>
-        </li>
-        <li id="layout">
-            <a href="#/dashboard" class="li-parent">
+        </div>
+        <div id="menu-layout" data-toggle="collapse" data-target="#collapse-layout">
+            <a href="" class="menu-parent">
                 <i class="glyphicon glyphicon-pencil"></i>
                 <span>Layout</span>
                 <span class="caret"></span>
             </a>
-        </li>
-        <li id="conteudo">
-            <a href="#/dashboard" class="li-parent">
+            <div id="collapse-layout" class="collapse menu-collapse">
+                <ul>
+                    <li><a href="#">Modelo</a></li>
+                    <li><a href="#">Cores</a></li>
+                    <li><a href="#">Fontes</a></li>
+                    <li><a href="#">Tema</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="menu-conteudo" data-toggle="collapse" data-target="#collapse-conteudo">
+            <a href="" class="menu-parent">
                 <i class="glyphicon glyphicon-align-left"></i>
                 <span>Conteúdo</span>
                 <span class="caret"></span>
             </a>
-        </li>
-        <li id="configuracoes">
-            <a href="#/dashboard" class="li-parent">
+            <div id="collapse-conteudo" class="collapse menu-collapse">
+                <div><a href="#">Tema</a></div>
+            </div>
+        </div>
+        <div id="menu-configuracoes" data-toggle="collapse" data-target="#collapse-configuracoes">
+            <a href="" class="menu-parent">
                 <i class="glyphicon glyphicon-wrench"></i>
                 <span>Configurações</span>
                 <span class="caret"></span>
             </a>
-        </li>
-        <li id="ferramentas">
-            <a href="#/dashboard" class="li-parent">
+            <div id="collapse-configuracoes" class="collapse menu-collapse">
+                <ul>
+                    <li><a href="#">Geral</a></li>
+                    <li><a href="" ng-click="userConfiguration()">Usuarios</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="menu-ferramentas" data-toggle="collapse" data-target="#collapse-ferramentas">
+            <a href="" class="menu-parent">
                 <i class="glyphicon glyphicon-scissors"></i>
                 <span>Ferramentas</span>
                 <span class="caret"></span>
             </a>
-        </li>
-        <li id="relatorios">
-            <a href="#/dashboard" class="li-parent">
+            <div id="collapse-ferramentas" class="collapse menu-collapse">
+                <div><a href="#">Tema</a></div>
+            </div>
+        </div>
+        <div id="menu-relatorios">
+            <a href="" class="menu-parent">
                 <i class="glyphicon glyphicon-file"></i>
                 <span>Relatórios</span>
             </a>
-        </li>
-    </ul>
+        </div>
+    </div>
 </div>

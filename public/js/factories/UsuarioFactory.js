@@ -1,10 +1,20 @@
 angular.module('cmshirth').factory('UsuarioFactory', function($http){
 
-	var _saveUsuario = function(usuario){
-		return $http.post('/cadastroUsuario', usuario);
+	var _saveUser = function(user){
+		return $http.post('/newUser', user);
+	}
+
+	var _saveUserLogin = function(user){
+		return $http.post('/cadastroUsuario', user);
+	}
+
+	var _listUsers = function(){
+		return $http.get('/listUsers');
 	}
 
 	return {
-		saveUsuario: _saveUsuario
+		saveUser: _saveUser,
+		saveUserLogin: _saveUserLogin,
+		listUsers: _listUsers
 	}
 });

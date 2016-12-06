@@ -4,38 +4,27 @@ module.exports = function() {
 
     var usuarioSchema = mongoose.Schema({
 
-        nome: {
+        name: {
             type: String,
             required: true
         },
         email: {
             type: String,
-            required: true,
-            index: {
-				unique: true
-			}
+            required: true
         },
-        usuario: {
-        	type: String,
-			required: true,
-			index: {
-				unique: true
-			}
+        username: {
+            type: String,
+            required: true
         },
-        senha: {
-        	type: String,
-			required: true
+        password: {
+            type: String,
+            required: true
         },
-        acessos: [{
-        	dataAcesso: Date
-        }],
-        datacriacao: {
+        creationDate: Date,
+        lastAccess: Date,
+        modificationDates: [{
             type: Date
-        },
-        datamodificacao: [{
-        	dataModificacao: Date
         }]
-
     });
 
     return mongoose.model('Usuario', usuarioSchema);

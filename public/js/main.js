@@ -17,12 +17,17 @@ angular.module('cmshirth', ['Authentication', 'ngRoute', 'ngCookies', 'ngResourc
 			templateUrl: 'partials/admin/cadastro-usuario.html',
 			controller: 'CadastroUsuarioController'
 		})
-		.when('/cadastroUsuario/:idUsuario', {
-			templateUrl: 'partials/admin/cadastro-usuario.html',
-			controller: 'CadastroUsuarioController'
+		.when('/configUsuarios', {
+			templateUrl: 'partials/admin/config-usuarios.html',
+			controller: 'ConfigUsuariosController'
 		})
+		.when('/newUser', {
+			templateUrl: 'partials/admin/new-user.html',
+			controller: 'NewUserController'
+		});
 
 		//Routes Site
+		$routeProvider
 		.when('/inicio', {
 			templateUrl: 'partials/site/inicio.html',
 			controller: 'inicioController'
@@ -45,7 +50,7 @@ angular.module('cmshirth', ['Authentication', 'ngRoute', 'ngCookies', 'ngResourc
 
 	.run(function($rootScope, $location, $cookieStore, $http){
 
-		$rootScope.globals = $cookieStore.get('globals') || {};
+		/*$rootScope.globals = $cookieStore.get('globals') || {};
 		if($rootScope.globals.currentUser) {
 			$http.defaults.headers.common['Authorization'] = 'Basic' + $rootScope.globals.currentUser.authdata;
 		}
@@ -55,8 +60,6 @@ angular.module('cmshirth', ['Authentication', 'ngRoute', 'ngCookies', 'ngResourc
             if ($location.path() !== 'login' && !$rootScope.globals.currentUser) {
                 $location.path('login');
             }
-        });
+        });*/
 
-	})
-	
-	;
+	});

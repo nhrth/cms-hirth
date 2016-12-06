@@ -3,7 +3,7 @@ module.exports = function(app) {
     var Usuario = app.models.usuarioModel;
     var controller = {};
 
-    controller.listaUsuarios = function(req, res) {
+    controller.listUsers = function(req, res) {
         Usuario.find().exec()
             .then(function(usuarios) {
                     res.json(usuarios);
@@ -28,20 +28,23 @@ module.exports = function(app) {
                 });
     };
 
+    //Este método é chamado quando o usuário se cadastra no sistema.
     controller.salvaUsuario = function(req, res) {
         var _id = req.body._id;
 
         var dados = {
-            "nome": req.body.nome,
+            "name": req.body.name,
             "email": req.body.email,
-            "usuario": req.body.username,
-            "senha": req.body.senha
+            "username": req.body.username,
+            "password": req.body.password,
+            "creationDate": new Date(),
+            "lastAccess": new Date()
         };
 
         if (_id) {
             Usuario.findByIdAndUpdate(_id, dados).exec()
-                .then(function(usuario) {
-                        res.json(usuario);
+                .then(function(user) {
+                        res.json(user);
                     },
                     function(erro) {
                         console.log(erro);
@@ -49,8 +52,8 @@ module.exports = function(app) {
                     });
         } else {
             Usuario.create(dados)
-                .then(function(usuario) {
-                        res.status(201).json(usuario);
+                .then(function(user) {
+                        res.status(201).json(user);
                     },
                     function(erro) {
                         console.log(erro);
@@ -58,6 +61,39 @@ module.exports = function(app) {
                     });
         }
     };
+
+    //Este método é chamado quando o usuário cria outro usuário de dentro do sistema.
+    controller.newUser = function(req, res){
+        var _id = req.body._id;
+
+        var dados = {
+            "name": req.body.name,
+            "email": req.body.email,
+            "username": req.body.username,
+            "password": req.body.password,
+            "creationDate": new Date()
+        };
+
+        if (_id) {
+            Usuario.findByIdAndUpdate(_id, dados).exec()
+                .then(function(user) {
+                        res.json(user);
+                    },
+                    function(erro) {
+                        console.log(erro);
+                        res.status(500).json(erro);
+                    });
+        } else {
+            Usuario.create(dados)
+                .then(function(user) {
+                        res.status(201).json(user);
+                    },
+                    function(erro) {
+                        console.log(erro);
+                        res.status(500).json(erro);
+                    });
+        }
+    }
 
     controller.removeUsuario = function(req, res) {
         var _id = req.params.id;
@@ -73,20 +109,29 @@ module.exports = function(app) {
     controller.findByUsername = function(req, res) {
         var usuario = req.body.usuario;
         var senha = req.body.senha;
+        //console.log("Data Back-end: " + req.body.currentDate);
+
         Usuario.find({ 'usuario': usuario, 'senha': senha }).exec()
             .then(function(usuario) {
-                if (usuario.length > 0) {
-                    console.log("Usuário:")
-                    console.log(usuario);
-                    res.json({
-                        message: "Usuário encontrado.",
-                        usuario: usuario
-                    });
+                console.log("ID usuario: " + usuario[0]._id);
+                if (usuario.length > 0) {                  
+                    Usuario.update({_id: usuario[0]._id}, {$set: {"lastAccess": req.body.currentDate}}).exec()
+                        .then(function(usuarioAtt) {
+                                res.json({
+                                    message: "Usuário encontrado.",
+                                    usuario: usuario
+                                });
+                            },
+                            function(erro) {
+                                console.log("Erro: " + erro);
+                                res.status(500).json(erro);
+                            });
                 } else {
                     res.json({ message: "Usuário não encontrado." });
                 }
             }, function(error) {
-                return console.log(error);
+                console.log(erro);
+                res.status(500).json(error);
             });
     }
 

@@ -12,12 +12,8 @@ angular.module('cmshirth').controller('LoginController',
         $scope.login = function(usuario) {
             $scope.dataLoading = true;
             Authentication.login(usuario.username, usuario.senha, function(response) {
-                //console.log("Response");
-                //console.log(response);
                 if (response.message === "Usuário encontrado.") {
                     UsuarioService.setUsuario(response.usuario);
-                    //console.log("Usuário salvo no usuário service.");
-                    //console.log(UsuarioService.getUsuario());
                     Authentication.setCredentials(usuario.username, usuario.senha);                    
                     $location.path("dashboard");
                 } else {
@@ -27,7 +23,7 @@ angular.module('cmshirth').controller('LoginController',
             });
         };
 
-        $scope.cadastroUsuario = function() {
+        $scope.newUser = function() {
             $location.path('cadastroUsuario');
         };
 

@@ -16,7 +16,7 @@
     "express-load": "^1.1.15",
     "method-override": "^2.3.6",
     "mongodb": "^2.2.11",
-    "mongoose": "^4.6.5"
+    "mongoose": "^4.7.1"
   },
   "devDependencies": {},
   "description": ""
