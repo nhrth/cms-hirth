@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="user in users">
-                            <td class="idUser hidden">{{user._id}}</td>
+                            <td id="userId" class="idUser hidden">{{user._id}}</td>
                             <td>{{user.name}}</td>
                             <td>{{user.email}}</td>
                             <td>{{user.username}}</td>
@@ -37,8 +37,8 @@
                             <td>{{user.modificationDate || "-"}}</td>
                             <td>{{user.lastAccess || "-"}}</td>
                             <td>
-                                <button class="btn btn-cms-hirth"><span class="fa fa-pencil fa-lg"></span></button>
-                                <button class="btn btn-cms-hirth"><span class="fa fa-trash-o fa-lg"></span></button>
+                                <a class="btn btn-cms-hirth" ng-href="#/editUser/{{user._id}}"><span class="fa fa-pencil fa-lg"></span></a>
+                                <a class="btn btn-danger" ng-click="deleteUser(user)"><span class="fa fa-trash fa-lg"></span></a>
                             </td>
                         </tr>
                     </tbody>
@@ -47,8 +47,38 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#config-user-table').DataTable();
-});
-</script>
+<!-- Modal -->
+<div class="modal fade" id="modal-delete-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{titulo}}</h4>
+            </div>
+            <div class="modal-body">{{mensagem}}</div>
+            <input type="hidden" ng-model="userDelete" id="userDelete">
+            <div class="modal-footer">
+                <button type="button" id="yes-button" class="btn btn-danger">Sim</button>
+                <button type="button" id="no-button" class="btn btn-default" data-dismiss="modal">Não</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-success-delete-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{titulo}}</h4>
+            </div>
+            <div class="modal-body">{{mensagem}}</div>
+            <div class="modal-footer">
+                <button type="button" id="ok-button" class="btn btn-cms-hirth">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

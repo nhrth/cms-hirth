@@ -14,7 +14,7 @@ module.exports = function(app) {
                 });
     };
 
-    controller.findByIdUsuario = function(req, res) {
+    controller.findByIdUser = function(req, res) {
         var _id = req.params.id;
         Usuario.findById(_id).exec()
             .then(function(usuario) {
@@ -63,7 +63,7 @@ module.exports = function(app) {
     };
 
     //Este método é chamado quando o usuário cria outro usuário de dentro do sistema.
-    controller.newUser = function(req, res){
+    controller.newUser = function(req, res) {
         var _id = req.body._id;
 
         var dados = {
@@ -77,7 +77,10 @@ module.exports = function(app) {
         if (_id) {
             Usuario.findByIdAndUpdate(_id, dados).exec()
                 .then(function(user) {
-                        res.json(user);
+                        res.json({
+                            message: "Usuário atualizado com sucesso!",
+                            user: user
+                        });
                     },
                     function(erro) {
                         console.log(erro);
@@ -86,7 +89,11 @@ module.exports = function(app) {
         } else {
             Usuario.create(dados)
                 .then(function(user) {
-                        res.status(201).json(user);
+                        res.json({
+                            message: "Usuário cadastrado com sucesso!",
+                            user: user,
+                            status: 201
+                        });
                     },
                     function(erro) {
                         console.log(erro);
@@ -95,11 +102,14 @@ module.exports = function(app) {
         }
     }
 
-    controller.removeUsuario = function(req, res) {
+    controller.deleteUser = function(req, res) {
         var _id = req.params.id;
         Usuario.remove({ "_id": _id }).exec()
             .then(function() {
-                    res.status(204).end();
+                    res.json({
+                        message: "Usuário deletado com sucesso.",
+                        status: 204
+                    });
                 },
                 function(erro) {
                     return console.error(erro);
@@ -114,8 +124,8 @@ module.exports = function(app) {
         Usuario.find({ 'usuario': usuario, 'senha': senha }).exec()
             .then(function(usuario) {
                 console.log("ID usuario: " + usuario[0]._id);
-                if (usuario.length > 0) {                  
-                    Usuario.update({_id: usuario[0]._id}, {$set: {"lastAccess": req.body.currentDate}}).exec()
+                if (usuario.length > 0) {
+                    Usuario.update({ _id: usuario[0]._id }, { $set: { "lastAccess": req.body.currentDate } }).exec()
                         .then(function(usuarioAtt) {
                                 res.json({
                                     message: "Usuário encontrado.",

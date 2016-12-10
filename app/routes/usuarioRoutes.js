@@ -12,4 +12,8 @@ module.exports = function(app){
 
 	app.route('/listUsers')
 		.get(usuarioController.listUsers);
+
+	app.route('/user/:id')
+		.get(usuarioController.findByIdUser)
+		.delete(usuarioController.deleteUser);
 }

@@ -12,9 +12,19 @@ angular.module('cmshirth').factory('UsuarioFactory', function($http){
 		return $http.get('/listUsers');
 	}
 
+	var _editUser = function(idUser){
+		return $http.get('/user/' + idUser);
+	}
+
+	var _deleteUser = function(idUser){
+		return $http.delete('/user/' + idUser);
+	}
+
 	return {
 		saveUser: _saveUser,
 		saveUserLogin: _saveUserLogin,
-		listUsers: _listUsers
+		listUsers: _listUsers,
+		editUser: _editUser,
+		deleteUser: _deleteUser
 	}
 });

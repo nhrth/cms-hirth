@@ -1,0 +1,59 @@
+<div ng-include="'../partials/admin/menu-superior.html'"></div>
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div ng-include="'../partials/admin/menu-lateral.html'"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10 text-left">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="page-header">Novo Usuário</h2>
+                </div>
+            </div>
+            <div class="page-body row">
+                <form id="formNewUser" name="formNewUser" ng-submit="saveUser(user)">
+                    <input type="hidden" name="name" class="form-control" ng-model="user._id" ng-required="true">
+                    <div class="form-group col-md-12 row">
+                        <label>Nome</label><span> *</span>
+                        <input type="text" name="name" class="form-control" ng-model="user.name" ng-required="true">
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label>E-mail</label><span> *</span>
+                        <input type="text" name="email" class="form-control" ng-model="user.email" ng-required="true">
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label>Usuário</label><span> *</span>
+                        <input type="text" name="username" class="form-control" ng-model="user.username" ng-required="true">
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <label>Senha</label><span> *</span>
+                        <input type="password" name="password" class="form-control" ng-model="user.password" ng-required="true" ng-disabled="true">
+                    </div>
+                    <div class="col-md-12 row">
+                        <span>* Campos obrigatórios</span>
+                    </div>
+                    <div class="col-md-12 row" align="center">
+                        <button type="submit" class="btn btn-cms-hirth" ng-disabled="formNovoUsuario.$invalid">Salvar</button>
+                        <button type="button" class="btn btn-default" ng-click="cancel()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modal-edit-user" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{titulo}}</h4>
+            </div>
+            <div class="modal-body">{{mensagem}}</div>
+            <div class="modal-footer">
+                <button type="button" id="ok-button" class="btn btn-cms-hirth" ng-click="okButtonModal()">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

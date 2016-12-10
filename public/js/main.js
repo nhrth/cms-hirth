@@ -24,6 +24,10 @@ angular.module('cmshirth', ['Authentication', 'ngRoute', 'ngCookies', 'ngResourc
 		.when('/newUser', {
 			templateUrl: 'partials/admin/new-user.html',
 			controller: 'NewUserController'
+		})
+		.when('/editUser/:idUser', {
+			templateUrl: 'partials/admin/edit-user.html',
+			controller: 'EditUserController'
 		});
 
 		//Routes Site
