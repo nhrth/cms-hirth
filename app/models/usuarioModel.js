@@ -20,11 +20,9 @@ module.exports = function() {
             type: String,
             required: true
         },
-        creationDate: Date,
-        lastAccess: Date,
-        modificationDates: [{
-            type: Date
-        }]
+        creationDate: String,
+        lastAccess: String,
+        lastModification: String
     });
 
     return mongoose.model('Usuario', usuarioSchema);

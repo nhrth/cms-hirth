@@ -1,0 +1,166 @@
+<div ng-include="'../partials/admin/menu-superior.html'"></div>
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div ng-include="'../partials/admin/menu-lateral.html'"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10 text-left">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="page-header">Conteúdo - Menu</h2>
+                </div>
+            </div>
+            <div class="page-body row">
+                <div style="padding-bottom: 1em;">
+                    <button class="btn btn-cms-hirth" ng-click="newMenu()">
+                        <i class="fa fa-plus fa-lg" style="padding-right: 2px"></i> Novo
+                    </button>
+                </div>
+                <table id="config-menu-table" class="table table-hover table-bordered" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Menu</th>
+                            <th>Submenus</th>
+                            <th>URL</th>
+                            <th>Ordem</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="menu in menus">
+                            <td id="menuId" class="idMenu hidden">{{menu._id}}</td>
+                            <td>{{menu.titleMenu}}</td>
+                            <td>
+                                <div ng-repeat="submenu in menu.submenus">
+                                    <a data-toggle="tooltip" title="Editar Submenu" ng-href="#/editMenu/{{submenu._id}}">{{submenu.titleMenu}}</a>
+                                    <br>
+                                </div>
+                            </td>
+                            <td>{{menu.urlMenu}}</td>
+                            <td>{{menu.orderMenu}}</td>
+                            <td ng-if="menu.statusMenu == true">Ativo</td>
+                            <td ng-if="menu.statusMenu == false">Inativo</td>
+                            <td>
+                                <div style="display: inline;" data-toggle="tooltip" title="Editar">
+                                    <a class="btn btn-cms-hirth" ng-href="#/editMenu/{{menu._id}}"><span class="fa fa-pencil"></span></a>
+                                </div>
+                                <div style="display: inline;" data-toggle="tooltip" title="Excluir">
+                                    <a class="btn btn-danger" ng-click="deleteMenu(menu)"><span class="fa fa-trash"></span></a>
+                                </div>
+                                <div ng-show="menu.statusMenu == true" style="display: inline;" data-toggle="tooltip" title="Inativar">
+                                    <a class="btn btn-danger" ng-click="inactiveMenuSite(menu)"><span class="fa fa-times"></span></a>
+                                </div>
+                                <div ng-show="menu.statusMenu == false" style="display: inline;" data-toggle="tooltip" title="Ativar">
+                                    <a class="btn btn-success" ng-click="activeMenuSite(menu)"><span class="fa fa-check"></span></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modal-delete-menu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{titulo}}</h4>
+            </div>
+            <div class="modal-body">{{mensagem}}</div>
+            <input type="hidden" ng-model="menuDelete" id="menuDelete">
+            <div class="modal-footer">
+                <button type="button" id="yes-button" class="btn btn-danger">Sim</button>
+                <button type="button" id="no-button" class="btn btn-default" data-dismiss="modal">Não</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-active-menu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{titulo}}</h4>
+            </div>
+            <div class="modal-body">{{mensagem}}</div>
+            <input type="hidden" ng-model="menuActive" id="menuActive">
+            <div class="modal-footer">
+                <button type="button" id="yes-button-active" class="btn btn-danger">Sim</button>
+                <button type="button" id="no-button" class="btn btn-default" data-dismiss="modal">Não</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-inactive-menu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{titulo}}</h4>
+            </div>
+            <div class="modal-body">{{mensagem}}</div>
+            <input type="hidden" ng-model="menuInactive" id="menuInactive">
+            <div class="modal-footer">
+                <button type="button" id="yes-button-inactive" class="btn btn-danger">Sim</button>
+                <button type="button" id="no-button" class="btn btn-default" data-dismiss="modal">Não</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-success-delete-menu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{titulo}}</h4>
+            </div>
+            <div class="modal-body">{{mensagem}}</div>
+            <div class="modal-footer">
+                <button type="button" id="ok-button" class="btn btn-cms-hirth">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-success-active-menu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{titulo}}</h4>
+            </div>
+            <div class="modal-body">{{mensagem}}</div>
+            <div class="modal-footer">
+                <button type="button" id="ok-button-active" class="btn btn-cms-hirth">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal-success-inactive-menu" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{titulo}}</h4>
+            </div>
+            <div class="modal-body">{{mensagem}}</div>
+            <div class="modal-footer">
+                <button type="button" id="ok-button-inactive" class="btn btn-cms-hirth">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

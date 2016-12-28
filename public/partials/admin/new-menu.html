@@ -1,0 +1,78 @@
+<div ng-include="'../partials/admin/menu-superior.html'"></div>
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div ng-include="'../partials/admin/menu-lateral.html'"></div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10 text-left">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h2 class="page-header">Novo Menu</h2>
+                </div>
+            </div>
+            <div class="page-body row">
+                <form id="formNewMenuSite" name="formNewMenuSite" ng-submit="saveMenuSite(menuSite)">
+                    <div class="form-group col-md-12 row">
+                        <div class="col-md-6">
+                            <label>Título</label><span class="obrigatorio"> *</span>
+                            <input type="text" name="titleMenu" class="form-control" ng-model="menuSite.titleMenu" ng-required="true">
+                        </div>
+                        <div class="col-md-6 row">
+                            <div class="col-md-12">
+                                <label>É submenu?</label><span class="obrigatorio"> *</span></div>
+                            <div class="col-md-6">
+                                <input type="radio" name="isSubmenu" ng-model="menuSite.isSubmenu" value="true"> Sim
+                            </div>
+                            <div class="col-md-6">
+                                <input type="radio" name="isSubmenu" ng-model="menuSite.isSubmenu" value="false" checked="checked"> Não
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12 row">
+                        <div class="col-md-6">
+                            <label>URL</label>
+                            <input type="text" name="urlMenu" class="form-control" ng-model="menuSite.urlMenu">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Ordem</label>
+                            <input type="text" name="orderMenu" class="form-control" ng-model="menuSite.orderMenu">
+                        </div>
+                    </div>
+                    <div class="form-group col-md-12 row" ng-show="menuSite.isSubmenu == 'true'">
+                        <div class="col-md-12">
+                            <label>Menu pai</label>
+                            <select class="form-control" ng-model="menuSite.idParentMenuSite" ng-options="parentMenu._id as parentMenu.titleMenu for parentMenu in parentMenuSites">
+                                <option value="">Selecione o Menu pai</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row" style="padding: 1em;">
+                        <div class="col-md-12">
+                            <span class="obrigatorio">* Campos obrigatórios</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 row" align="center">
+                        <button type="submit" class="btn btn-cms-hirth" ng-disabled="formNewMenuSite.$invalid">Salvar</button>
+                        <button type="button" class="btn btn-default" ng-click="buttonCancel()">Cancelar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="modal-new-menuSite" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{titulo}}</h4>
+            </div>
+            <div class="modal-body">{{mensagem}}</div>
+            <div class="modal-footer">
+                <button type="button" id="ok-button" class="btn btn-cms-hirth">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

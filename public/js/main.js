@@ -28,25 +28,37 @@ angular.module('cmshirth', ['Authentication', 'ngRoute', 'ngCookies', 'ngResourc
 		.when('/editUser/:idUser', {
 			templateUrl: 'partials/admin/edit-user.html',
 			controller: 'EditUserController'
+		})
+		.when('/conteudoMenu', {
+			templateUrl: 'partials/admin/conteudo-menu.html',
+			controller: 'ConteudoMenuController'
+		})
+		.when('/newMenuConteudo', {
+			templateUrl: 'partials/admin/new-menu.html',
+			controller: 'NewMenuConteudoController'
+		})
+		.when('/editMenu/:idMenuSite', {
+			templateUrl: 'partials/admin/edit-menu.html',
+			controller: 'EditMenuConteudoController'
+		})
+		.when('/posts', {
+			templateUrl: 'partials/admin/posts.html',
+			controller: 'PostController'
+		})
+		.when('/newPost', {
+			templateUrl: 'partials/admin/new-post.html',
+			controller: 'NewPostController'
+		})
+		.when('/editPost/:idPost', {
+			templateUrl: 'partials/admin/edit-post.html',
+			controller: 'EditPostController'
 		});
 
 		//Routes Site
 		$routeProvider
-		.when('/inicio', {
-			templateUrl: 'partials/site/inicio.html',
-			controller: 'inicioController'
-		})
-		.when('/menu', {
-			templateUrl: 'partials/site/menu.html',
-			controller: 'menuController'
-		})
-		.when('/noticias', {
-			templateUrl: 'partials/site/allnoticias.html',
-			controller: 'allNoticiasController'
-		})
-		.when('/noticia/:idNoticia', {
-			templateUrl: 'partials/site/noticia.html',
-			controller: 'noticiaController'
+		.when('/home', {
+			templateUrl: 'partials/site/home.html',
+			controller: 'homeController'
 		});
 
 		$routeProvider.otherwise({ redirectTo: '/login' })

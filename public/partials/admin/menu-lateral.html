@@ -31,7 +31,11 @@
                 <span class="caret"></span>
             </a>
             <div id="collapse-conteudo" class="collapse menu-collapse">
-                <div><a href="#">Tema</a></div>
+                <ul>
+                    <li><a ng-href="#/conteudoMenu">Menu</a></li>
+                    <li><a href="#">Banner</a></li>
+                    <li><a href="#/posts">Postagens</a></li>
+                </ul>
             </div>
         </div>
         <div id="menu-configuracoes" data-toggle="collapse" data-target="#collapse-configuracoes">
@@ -43,7 +47,7 @@
             <div id="collapse-configuracoes" class="collapse menu-collapse">
                 <ul>
                     <li><a href="#">Geral</a></li>
-                    <li><a href="" ng-click="userConfiguration()">Usuarios</a></li>
+                    <li><a href="" ng-href="#/configUsuarios">Usuarios</a></li>
                 </ul>
             </div>
         </div>

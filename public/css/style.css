@@ -75,13 +75,15 @@ body {
 
 .btn-danger {
     border: none;
-    font-weight: bold;
 }
 
 .btn-default {
     border: none;
     background-color: #CCCCCC;
-    font-weight: bold;
+}
+
+.btn-success {
+    border: none;
 }
 
 /* Links personalidados */
@@ -225,4 +227,9 @@ footer {
 
 .table-hover tbody tr:hover {
     background-color: rgba(0, 151 , 156, 0.1);
+}
+
+.obrigatorio {
+    color: red;
+    font-weight: bold;
 }

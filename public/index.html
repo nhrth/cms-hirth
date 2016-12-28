@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style-site.css">
+    <link rel="stylesheet" href="vendor/simple-gallery/dist/simple-gallery.css">
 </head>
 
 <body>
@@ -22,13 +24,19 @@
     <script src="vendor/angular-bootstrap/ui-bootstrap.js"></script>
     <script src="vendor/jquery/dist/jquery.js"></script>
     <script src="vendor/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="vendor/simple-gallery/dist/simple-gallery.js"></script>
+    <script src="vendor/Sortable/Sortable.js"></script>
     <script src="https://use.fontawesome.com/fd8ad1c280.js"></script>
     <script src="js/main.js"></script>
+    <!-- Directives -->
+    
     <!-- Admin Factories -->
     <script src="js/factories/AuthenticationFactory.js"></script>
     <script src="js/factories/Base64Factory.js"></script>
     <script src="js/factories/UsuarioFactory.js"></script>
     <script src="js/factories/LoginFactory.js"></script>
+    <script src="js/factories/MenuSiteFactory.js"></script>
+    <script src="js/factories/PostFactory.js"></script>
     <!-- Admin Services -->
     <script src="js/services/UsuarioService.js"></script>
     <!-- Admin Controllers -->
@@ -39,11 +47,14 @@
     <script src="js/controllers/admin/ConfigUsuariosController.js"></script>
     <script src="js/controllers/admin/NewUserController.js"></script>
     <script src="js/controllers/admin/EditUserController.js"></script>
+    <script src="js/controllers/admin/ConteudoMenuController.js"></script>
+    <script src="js/controllers/admin/NewMenuConteudoController.js"></script>
+    <script src="js/controllers/admin/EditMenuConteudoController.js"></script>
+    <script src="js/controllers/admin/PostController.js"></script>
+    <script src="js/controllers/admin/NewPostController.js"></script>
+    <script src="js/controllers/admin/EditPostController.js"></script>
     <!-- Site Controllers -->
-    <script src="js/controllers/site/inicioController.js"></script>
-    <script src="js/controllers/site/menuController.js"></script>
-    <script src="js/controllers/site/allNoticiasController.js"></script>
-    <script src="js/controllers/site/noticiaController.js"></script>
+    <script src="js/controllers/site/HomeController.js"></script>
 </body>
 
 </html>

@@ -5,7 +5,7 @@ angular.module('cmshirth').controller('ConfigUsuariosController',
 
         function listUsers() {
             UsuarioFactory.listUsers()
-                .then(function(users) {
+                .then(function(users) {                    
                     $scope.users = users.data;
                 }, function(error) {
                     $scope.message = error;

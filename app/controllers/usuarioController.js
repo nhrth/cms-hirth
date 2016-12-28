@@ -31,14 +31,18 @@ module.exports = function(app) {
     //Este método é chamado quando o usuário se cadastra no sistema.
     controller.salvaUsuario = function(req, res) {
         var _id = req.body._id;
+        var date = new Date();
+        var currentDateFormat = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " "
+                                + date.getHours() + ":" + date.getMinutes();
+        //console.log("Data Atual Formatada: " + currentDateFormat);
 
         var dados = {
             "name": req.body.name,
             "email": req.body.email,
             "username": req.body.username,
             "password": req.body.password,
-            "creationDate": new Date(),
-            "lastAccess": new Date()
+            "creationDate": currentDateFormat,
+            "lastAccess": currentDateFormat
         };
 
         if (_id) {
@@ -65,16 +69,19 @@ module.exports = function(app) {
     //Este método é chamado quando o usuário cria outro usuário de dentro do sistema.
     controller.newUser = function(req, res) {
         var _id = req.body._id;
-
-        var dados = {
-            "name": req.body.name,
-            "email": req.body.email,
-            "username": req.body.username,
-            "password": req.body.password,
-            "creationDate": new Date()
-        };
+        var date = new Date();
+        var currentDateFormat = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " "
+                                + date.getHours() + ":" + date.getMinutes();
+        //console.log("Data Atual Formatada: " + currentDateFormat);
 
         if (_id) {
+            var dados = {
+                "name": req.body.name,
+                "email": req.body.email,
+                "username": req.body.username,
+                "password": req.body.password,
+                "lastModification": currentDateFormat
+            };
             Usuario.findByIdAndUpdate(_id, dados).exec()
                 .then(function(user) {
                         res.json({
@@ -87,6 +94,13 @@ module.exports = function(app) {
                         res.status(500).json(erro);
                     });
         } else {
+            var dados = {
+                "name": req.body.name,
+                "email": req.body.email,
+                "username": req.body.username,
+                "password": req.body.password,
+                "creationDate": currentDateFormat
+            };
             Usuario.create(dados)
                 .then(function(user) {
                         res.json({
@@ -119,13 +133,16 @@ module.exports = function(app) {
     controller.findByUsername = function(req, res) {
         var usuario = req.body.usuario;
         var senha = req.body.senha;
+        var date = new Date();
+        var currentDateFormat = date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear() + " "
+                                + date.getHours() + ":" + date.getMinutes();
         //console.log("Data Back-end: " + req.body.currentDate);
 
         Usuario.find({ 'usuario': usuario, 'senha': senha }).exec()
             .then(function(usuario) {
                 console.log("ID usuario: " + usuario[0]._id);
                 if (usuario.length > 0) {
-                    Usuario.update({ _id: usuario[0]._id }, { $set: { "lastAccess": req.body.currentDate } }).exec()
+                    Usuario.update({ _id: usuario[0]._id }, { $set: { "lastAccess": currentDateFormat}}).exec()
                         .then(function(usuarioAtt) {
                                 res.json({
                                     message: "Usuário encontrado.",

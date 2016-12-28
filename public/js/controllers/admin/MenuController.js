@@ -11,4 +11,6 @@ angular.module('cmshirth').controller('MenuController',
     		Authentication.clearCredentials();
     		$location.path('login');
     	}
+
+        $('[data-toggle="tooltip"]').tooltip(); 
     });

@@ -18,6 +18,8 @@
     "mongodb": "^2.2.11",
     "mongoose": "^4.7.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "multer": "^1.2.1"
+  },
   "description": ""
 }
