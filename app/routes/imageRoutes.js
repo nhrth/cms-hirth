@@ -9,7 +9,7 @@ module.exports = function(app){
 
 	var imageController = app.controllers.imageController;
 
-	app.route('/upload', uploading)
+	app.route('/upload')
 		.post(imageController.uploadImage);
 		
 }

@@ -24,6 +24,7 @@
     "bootstrap-side-navbar": "^1.0.1",
     "angular-cookies": "^1.5.8",
     "simple-gallery": "simple-gallery-js#*",
-    "Sortable": "sortablejs#^1.4.2"
+    "Sortable": "sortablejs#^1.4.2",
+    "angular-file-upload": "^2.4.1"
   }
 }

@@ -1,6 +1,6 @@
 angular.module('Authentication', []);
 
-angular.module('cmshirth', ['Authentication', 'ngRoute', 'ngCookies', 'ngResource', 'ui.bootstrap'])
+angular.module('cmshirth', ['Authentication', 'ngRoute', 'ngCookies', 'ngResource', 'ui.bootstrap', 'angularFileUpload'])
 	.config(function($routeProvider, $httpProvider){
 
 		//Routes Admin
